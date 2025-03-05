@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import PruebaComponent from "../components/PruebaComponent.vue";
+import PruebaComponent from "../domains/shared/components/PruebaComponent.vue";
 
 const routes = [
   { path: "", name: "Prueba", component: PruebaComponent },

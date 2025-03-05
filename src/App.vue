@@ -1,11 +1,13 @@
 <template>
-  <router-view/>
+  <DefaultLayout/>
 </template>
 
 <script setup lang="ts">
-
+  import DefaultLayout from './domains/shared/layouts/DefaultLayout.vue';
 </script>
 
 <style scoped>
 
 </style>
+
+
