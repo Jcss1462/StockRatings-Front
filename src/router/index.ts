@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import PruebaComponent from "../domains/shared/components/PruebaComponent.vue";
+import StockView from "../domains/stocks/views/StockView.vue";
 
 const routes = [
-  { path: "", name: "Prueba", component: PruebaComponent },
+  { path: "", name: "StockView", component: StockView },
 ];
 
 const router = createRouter({
