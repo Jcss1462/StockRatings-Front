@@ -36,6 +36,8 @@
     import { fetchBestStock } from "../../shared/services/stockService";
     import { ChevronUpIcon, ChevronDownIcon, MinusIcon } from "@heroicons/vue/24/solid";
     import type { Stock } from "../../shared/models/stockModel";
+    import { useToastStore } from "../../shared/store/toastStore";
+    import { useSpinnerStore } from "../../shared/store/spinnerStore";
 
     const emptyStock: Stock = {
         id: 0,
@@ -52,16 +54,23 @@
         };
         
     const bestStock = ref<Stock>(emptyStock);
+
+    const toastStore = useToastStore();
+    const spinnerStore = useSpinnerStore();
     
     onMounted(async () => {
-        try {
-            const data = await fetchBestStock();
-            if(data != null){
-                Object.assign(bestStock.value, data);
-            }  
-        } catch (error) {
-        console.error("Error al obtener la mejor opción de inversión:", error);
+      spinnerStore.showSpinner=true;
+      await fetchBestStock().then((data) => {
+        if (data  != null) {
+          Object.assign(bestStock.value, data);
         }
+      })
+      .catch((error) => {
+        console.error("Error al obtener la mejor opción de recomendacion inversión:", error);
+        toastStore.addToast("Error al obtener la mejor opción de recomendacion inversión", "error");
+      }).finally(()=>{
+        spinnerStore.showSpinner=false;
+      });
     });
   </script>
   
