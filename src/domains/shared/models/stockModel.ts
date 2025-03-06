@@ -12,4 +12,5 @@ export interface Stock {
 
     //custopm props
     growth:number
+    position:number
   }
