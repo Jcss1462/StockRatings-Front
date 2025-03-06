@@ -21,7 +21,7 @@
       </div>
     </div>
 </template>
-<script setup>
+<script lang="ts" setup>
     import BestStockComponent from '../components/BestStockComponent.vue';
     import StockListComponent from '../components/StockListComponent.vue';
 </script>
