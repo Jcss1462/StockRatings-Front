@@ -14,8 +14,8 @@
       </div>
   
       <!-- Row 2 -->
-      <div class="grid grid-cols-12 h-[50vh] overflow-auto">
-        <div class="col-span-12 min-w-[1450px]">
+      <div class="grid grid-cols-12">
+        <div class="col-span-12">
           <StockListComponent></StockListComponent>
         </div>
       </div>
