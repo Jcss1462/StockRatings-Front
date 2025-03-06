@@ -1,14 +1,14 @@
 <template>
     <div class="container mx-auto p-4">
       <!-- Row 1 -->
-      <div class="grid grid-cols-12 gap-4 mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
         <!-- Columna Izquierda (Título) -->
-        <div class="col-span-6 flex items-center">
-          <h1 class="text-2xl font-bold">Título de la Vista</h1>
+        <div class="md:col-span-6 flex items-center">
+          <h1 class="text-2xl font-bold">Tendencias del Mercado y Mejor Inversión 📊</h1>
         </div>
         
         <!-- Columna Derecha (Componente Extra) -->
-        <div class="col-span-6">
+        <div class="md:col-span-6">
             <BestStockComponent></BestStockComponent>
         </div>
       </div>
