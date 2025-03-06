@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto p-4">
+    <div :key="componentKey" class="container mx-auto p-4">
       <!-- Row 1 -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-5 mt-5 pt-5 pb-5">
         <!-- Columna Izquierda (Título) -->
@@ -22,6 +22,30 @@
     </div>
 </template>
 <script lang="ts" setup>
+    import { ref, watch } from 'vue';
+    import { useStockStore } from '../../shared/store/stockStore';
     import BestStockComponent from '../components/BestStockComponent.vue';
     import StockListComponent from '../components/StockListComponent.vue';
+
+    const componentKey = ref(0);
+    const stockStore=useStockStore();
+    
+    watch(
+      () => stockStore.refreshStock, 
+      (newValue) => {
+        //si detecto la señal de refresh recargo el componente
+        if (newValue==true) {
+          console.log("Señal de recarga de stock recibida, recargando....")
+          //apago la señal de recarga
+          stockStore.refreshStock=false
+          //recargo
+          componentKey.value++;
+        }
+      }
+    );
+
+
+
+
+
 </script>

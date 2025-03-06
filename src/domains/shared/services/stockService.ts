@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { Stock } from "../models/stockModel";
+import type { SyncResponse } from "../models/syncResponseModel";
 
 const API_URL = import.meta.env.VITE_STOCK_RATING_API_URL;
 
@@ -21,3 +22,16 @@ export async function fetchBestStock(): Promise<Stock|null> {
 
   return response.data;
 }
+
+export async function syncBd(token:String): Promise<SyncResponse> { 
+  const response = await axios.post<SyncResponse>(
+    `${API_URL}/stocks/sync`,
+    {}, // Cuerpo vacío porque es una solicitud POST sin payload
+    {
+        headers: {
+            Authorization: `Bearer ${token}`, // Token en el header
+        },
+    });
+  return response.data;
+}
+
