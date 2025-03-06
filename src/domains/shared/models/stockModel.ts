@@ -9,4 +9,7 @@ export interface Stock {
     target_from: number;
     target_to: number;
     time: string;
+
+    //custopm props
+    growth:number
   }
