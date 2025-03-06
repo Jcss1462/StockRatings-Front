@@ -61,7 +61,7 @@
                         {{ stock.rating_to }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ (stock.growth).toFixed(2) }}
+                        {{ (stock.growth).toFixed(2) }}%
                     </td>
                     <td class="px-6 py-4">
                         <ChevronUpIcon v-if="stock.growth>0" class="w-7 h-7 text-green-500" />
