@@ -50,7 +50,8 @@
         target_from: 0,
         target_to: 0,
         time: "",
-        growth: 0, 
+        growth: 0,
+        position: 0 
         };
         
     const bestStock = ref<Stock>(emptyStock);
