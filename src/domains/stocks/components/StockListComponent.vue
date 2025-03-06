@@ -78,14 +78,23 @@
     import type { Stock } from "../../shared/models/stockModel";
     import { fetchStocks } from "../../shared/services/stockService";
     import { ChevronUpIcon, ChevronDownIcon, MinusIcon } from "@heroicons/vue/16/solid";
+    import { useToastStore } from "../../shared/store/toastStore";
+    import { useSpinnerStore } from "../../shared/store/spinnerStore";
     const stocks = ref<Stock[]>([]);
+    const toastStore = useToastStore();
+    const spinnerStore = useSpinnerStore();
 
     onMounted(async () => {
-        try {
-            stocks.value = await fetchStocks(); // Llamada a la API
-        } catch (error) {
-            console.error("Error al obtener stocks:", error);
-        }
+        spinnerStore.showSpinner=true;
+        await fetchStocks().then((data) => {
+            stocks.value=data;
+        })
+        .catch((error) => {
+            console.error("Error al obtener la lista de stocks:", error);
+            toastStore.addToast("Error al obtener la lista de stocks", "error");
+        }).finally(()=>{
+            spinnerStore.showSpinner=false;
+        });
     });
     
 </script>
